@@ -9,21 +9,27 @@ We can make new features and try to convince each other to support these.
 
 Here is a first set of features that a chat network should at least support:
 
-    NAME Simon
-    WHO
-    BROADCAST Hello World!
-    QUIT
+    Client Sends:                  Server responds:
+    NAME Simon                     OK Simon
+    WHO                            NAMES Alice Bob John
+    BROADCAST Hello World!         FROM Simon Hello World!
+    QUIT                           QUIT Simon
 
 That is, it should be possible to connect to a server and call yourself
-something (using the message `HELO <Name>`), ask who is currently on the server
-(using the message `WHO`) and sending a message to everyone on the server (using
-the message `BROADCAST <Message>`).
+something (using the message `NAME <Name>`), ask who is currently on the server
+(using the message `WHO`), send a message to everyone on the server (using the
+message `BROADCAST <Message>`) and quit (using `QUIT`).
 
 We should probably agree that linebreaks are made by one `\n` character, that
 names cannot contain spaces (for now), and that any one line is at most 1024
-bytes long, includes a `\n` and contains no NUL-bytes (bytes with ASCII value
+bytes long, ends with `\r\n` and contains no NUL-bytes (bytes with ASCII value
 0), in case anyone wants to write a client in C.
 
 Choose to write either a client or a server, or try one of the ones available in
 this repository. If you have written a nice client or server in a language you
 like, you can submit it here.
+
+Let's also use the TCP port number `33333` for servers.
+
+To test the server without a client, try `telnet some.server 33333`.
+

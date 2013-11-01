@@ -9,11 +9,11 @@ We can make new features and try to convince each other to support these.
 
 Here is a first set of features that a chat network should at least support:
 
-    Client Sends:                  Server responds:
-    NAME Simon                     NAME Simon
-    WHO                            NAMES Alice Bob John
-    BROADCAST Hello World!         FROM Simon Hello World!
-    QUIT                           QUIT Simon
+    Client sends to server:    Server responds...         ...to whom?
+    NAME Simon                 NAME Simon                 All clients
+    WHO                        NAMES Alice Bob John       Only sender
+    BROADCAST Hello World!     FROM Simon Hello World!    All clients
+    QUIT                       QUIT Simon                 All clients but sender
 
 That is, it should be possible to connect to a server and call yourself
 something (using the message `NAME <Name>`), ask who is currently on the server
